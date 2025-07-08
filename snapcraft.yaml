@@ -1,0 +1,21 @@
+name: password-generator
+version: '1.0.0'
+summary: A password generator app built with Flutter
+description: |
+  A simple password generator app built with Flutter.
+
+base: core20
+confinement: strict
+grade: stable
+
+apps:
+  password-generator:
+    command: desktop-launch password_generator
+
+parts:
+  flutter:
+    plugin: dump
+    source: /mnt/d/code/dart_flutter/CrossPlatform/password_generator/build/linux/x64/release/bundle
+    stage-packages:
+      - libsecret-1-dev
+      - libssl-dev
