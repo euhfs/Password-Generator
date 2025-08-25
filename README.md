@@ -2,7 +2,13 @@
 
 A simple, local, strong, customizable and privacy focused Password Generator built using Flutter.
 
-![Password Generator UI](./assets/mockups/passgen-mockup1.png)
+<p align="center">
+  <img src="./assets/mockups/passgen-mockup1.webp" width="18%" />
+  <img src="./assets/mockups/passgen-mockup2.webp" width="18%" />
+  <img src="./assets/mockups/passgen-mockup3.webp" width="18%" />
+  <img src="./assets/mockups/passgen-mockup4.webp" width="18%" />
+  <img src="./assets/mockups/passgen-mockup5.webp" width="18%" />
+</p>
 
 ## Features
 - **Customizable Password Length**: Set the desired length for your password.
