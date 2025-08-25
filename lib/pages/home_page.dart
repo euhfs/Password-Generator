@@ -138,6 +138,8 @@ class _HomePageState extends State<HomePage> {
   /// Generates a password using the controller and updates UI state.
   void generatePassword() {
     int length = int.tryParse(lengthController.text) ?? 12;
+
+    // Adjust length based on specific conditions
     if (widget.twelveCharsEnabled && length < 12) length = 12;
     if (!widget.twelveCharsEnabled && length < 5) length = 5;
 
@@ -158,12 +160,20 @@ class _HomePageState extends State<HomePage> {
       widget.addToHistory(password);
     }
 
+    // Calculate available unique characters based on the selected options
     final charsetLength =
         (useUppercase ? 26 : 0) +
         (useLowercase ? 26 : 0) +
         (useNumbers ? 10 : 0) +
         (useSymbols ? widget.symbolController.text.length : 0);
 
+    // Show toast if noRepeats setting is on and its not avaiable to create loger passwords
+    if (widget.noRepeats && length > charsetLength) {
+      Fluttertoast.showToast(
+        msg: 'Disable "No Repeating Characters" for longer passwords',
+        toastLength: Toast.LENGTH_LONG,
+      );
+    }
     final strength = passwordController.getPasswordStrength(
       password,
       charsetLength,
@@ -281,13 +291,6 @@ class _HomePageState extends State<HomePage> {
                 padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black26,
-                        offset: Offset(0, 2),
-                        blurRadius: 6,
-                      ),
-                    ],
                     color: theme.cardColor,
                     borderRadius: BorderRadius.circular(32),
                   ),
@@ -462,18 +465,12 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              // Generate Button
               SizedBox(
                 height: 50,
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(28),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 2,
-                        offset: Offset(0, 2),
-                      ),
-                    ],
                   ),
                   child: ElevatedButton(
                     onPressed: generatePassword,
@@ -492,19 +489,15 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
+
+              // Spacer
+              const SizedBox(height: 10),
+
               SizedBox(
                 height: 48,
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(22),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 2,
-                        offset: Offset(0, 2),
-                      ),
-                    ],
                   ),
                   child: ElevatedButton(
                     onPressed: () {
@@ -535,18 +528,12 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
+
         // Password length selector
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
           child: Container(
             decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black26,
-                  offset: Offset(0, 2),
-                  blurRadius: 6,
-                ),
-              ],
               color: theme.cardColor,
               borderRadius: BorderRadius.circular(20),
             ),
@@ -563,6 +550,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 SizedBox(width: 14),
+
                 // Length input field
                 Container(
                   width: 70,
@@ -573,7 +561,7 @@ class _HomePageState extends State<HomePage> {
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black26,
-                        blurRadius: 2,
+                        blurRadius: 4,
                         offset: Offset(0, 2),
                       ),
                     ],
@@ -629,7 +617,7 @@ class _HomePageState extends State<HomePage> {
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black26,
-                        blurRadius: 2,
+                        blurRadius: 4,
                         offset: Offset(0, 2),
                       ),
                     ],
@@ -660,7 +648,7 @@ class _HomePageState extends State<HomePage> {
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black26,
-                        blurRadius: 2,
+                        blurRadius: 4,
                         offset: Offset(0, 2),
                       ),
                     ],
@@ -690,13 +678,6 @@ class _HomePageState extends State<HomePage> {
             decoration: BoxDecoration(
               color: theme.cardColor,
               borderRadius: BorderRadius.circular(18),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black26,
-                  offset: Offset(0, 2),
-                  blurRadius: 6,
-                ),
-              ],
             ),
             padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
             child: Column(
@@ -788,6 +769,9 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
+
+        // Spacer
+        const SizedBox(height: 20),
       ],
     );
   }
@@ -842,6 +826,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
+
         // Passphrase strength bar
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 13.0, vertical: 4),
@@ -852,7 +837,10 @@ class _HomePageState extends State<HomePage> {
             valueColor: AlwaysStoppedAnimation<Color>(passphraseStrengthColor),
           ),
         ),
-        SizedBox(height: 4),
+
+        // Spacer
+        const SizedBox(height: 4),
+
         // Strength label
         Center(
           child: Text(
@@ -863,6 +851,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
+
         // Generate and Copy buttons
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
@@ -874,13 +863,6 @@ class _HomePageState extends State<HomePage> {
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 2,
-                        offset: Offset(0, 2),
-                      ),
-                    ],
                   ),
                   child: ElevatedButton(
                     onPressed: generatePassphrase,
@@ -905,13 +887,6 @@ class _HomePageState extends State<HomePage> {
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(22),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 2,
-                        offset: Offset(0, 2),
-                      ),
-                    ],
                   ),
                   child: ElevatedButton(
                     onPressed: () {
@@ -948,13 +923,6 @@ class _HomePageState extends State<HomePage> {
           child: Container(
             height: 60,
             decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black26,
-                  blurRadius: 2,
-                  offset: Offset(0, 2),
-                ),
-              ],
               color: theme.cardColor,
               borderRadius: BorderRadius.circular(20),
             ),
@@ -981,7 +949,7 @@ class _HomePageState extends State<HomePage> {
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black26,
-                        blurRadius: 2,
+                        blurRadius: 4,
                         offset: Offset(0, 2),
                       ),
                     ],
@@ -1035,7 +1003,10 @@ class _HomePageState extends State<HomePage> {
                     autofillHints: null,
                   ),
                 ),
+
+                // Spacer
                 Spacer(),
+
                 // Decrement button
                 Container(
                   width: 48,
@@ -1046,7 +1017,7 @@ class _HomePageState extends State<HomePage> {
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black26,
-                        blurRadius: 2,
+                        blurRadius: 4,
                         offset: Offset(0, 2),
                       ),
                     ],
@@ -1063,7 +1034,10 @@ class _HomePageState extends State<HomePage> {
                     },
                   ),
                 ),
-                SizedBox(width: 8),
+
+                // Spacer
+                const SizedBox(width: 8),
+
                 // Increment button
                 Container(
                   width: 48,
@@ -1074,7 +1048,7 @@ class _HomePageState extends State<HomePage> {
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black26,
-                        blurRadius: 2,
+                        blurRadius: 4,
                         offset: Offset(0, 2),
                       ),
                     ],
@@ -1095,6 +1069,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
+
         // Separator input
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
@@ -1103,13 +1078,6 @@ class _HomePageState extends State<HomePage> {
             decoration: BoxDecoration(
               color: theme.cardColor,
               borderRadius: BorderRadius.circular(18),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black26,
-                  offset: Offset(0, 2),
-                  blurRadius: 6,
-                ),
-              ],
             ),
             padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
             child: Row(
@@ -1122,7 +1090,10 @@ class _HomePageState extends State<HomePage> {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                SizedBox(width: 16),
+
+                // Spacer
+                const SizedBox(width: 16),
+
                 InkWell(
                   borderRadius: BorderRadius.circular(32),
                   onTap: () async {
@@ -1132,7 +1103,7 @@ class _HomePageState extends State<HomePage> {
                         String tempSep = passphraseSeparator;
                         return StatefulBuilder(
                           builder: (context, setDialogState) => AlertDialog(
-                            backgroundColor: Colors.white,
+                            backgroundColor: theme.cardColor,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
                             ),
@@ -1140,6 +1111,7 @@ class _HomePageState extends State<HomePage> {
                               'Choose Separator',
                               style: TextStyle(
                                 color: theme.textTheme.bodyMedium?.color,
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
                             content: Column(
@@ -1166,13 +1138,23 @@ class _HomePageState extends State<HomePage> {
                                             boxShadow: [
                                               BoxShadow(
                                                 color: Colors.black26,
-                                                blurRadius: 2,
+                                                blurRadius: 4,
                                                 offset: Offset(0, 2),
                                               ),
                                             ],
                                             color: tempSep == s
-                                                ? Colors.tealAccent
-                                                : Colors.white,
+                                                ? const Color.fromARGB(
+                                                    255,
+                                                    84,
+                                                    172,
+                                                    255,
+                                                  )
+                                                : const Color.fromARGB(
+                                                    255,
+                                                    207,
+                                                    207,
+                                                    207,
+                                                  ),
                                             borderRadius: BorderRadius.circular(
                                               16,
                                             ),
@@ -1192,7 +1174,11 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                   ],
                                 ),
-                                SizedBox(height: 16),
+
+                                // Spacer
+                                const SizedBox(height: 16),
+
+                                // Textfield
                                 TextField(
                                   autofocus: true,
                                   maxLength: 2,
@@ -1204,7 +1190,12 @@ class _HomePageState extends State<HomePage> {
                                   decoration: InputDecoration(
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Colors.black,
+                                        color: const Color.fromARGB(
+                                          255,
+                                          128,
+                                          128,
+                                          128,
+                                        ),
                                         width: 1.0,
                                       ),
                                     ),
@@ -1246,7 +1237,10 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ],
                             ),
+
+                            // Actions
                             actions: [
+                              // Cancel TextButton
                               TextButton(
                                 onPressed: () => Navigator.of(context).pop(),
                                 child: Text(
@@ -1258,6 +1252,8 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ),
                               ),
+
+                              // OK TextButton
                               TextButton(
                                 onPressed: () =>
                                     Navigator.of(context).pop(tempSep),
@@ -1315,6 +1311,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
+
         // Passphrase switches (Capitalize, Include Number, Include Symbol)
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
@@ -1322,13 +1319,6 @@ class _HomePageState extends State<HomePage> {
             decoration: BoxDecoration(
               color: theme.cardColor,
               borderRadius: BorderRadius.circular(18),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black26,
-                  offset: Offset(0, 2),
-                  blurRadius: 6,
-                ),
-              ],
             ),
             padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
             child: Column(
@@ -1350,7 +1340,10 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
+
+                // Divider
                 Divider(color: theme.dividerColor),
+
                 // Include Number switch
                 SwitchListTile(
                   value: includeNumber,
@@ -1368,7 +1361,10 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
+
+                // Divider
                 Divider(color: theme.dividerColor),
+
                 // Include Symbol switch
                 SwitchListTile(
                   value: includeSymbol,
@@ -1390,6 +1386,9 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
+
+        // Spacer
+        const SizedBox(height: 20),
       ],
     );
   }
