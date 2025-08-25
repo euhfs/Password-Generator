@@ -71,6 +71,7 @@ class VaultPageState extends State<VaultPage> {
       backgroundColor: theme.scaffoldBackgroundColor,
       body: Center(
         child: Text(
+          //TODO: make this page
           'Coming soon!',
           style: TextStyle(
             color: theme.textTheme.bodyLarge?.color,

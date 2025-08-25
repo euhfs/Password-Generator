@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:password_generator/widgets/popup_menu_button.dart';
 import 'package:password_generator/pages/feature_info_page.dart';
 import 'package:password_generator/controllers/password_controller.dart';
@@ -83,11 +84,6 @@ class _HomePageState extends State<HomePage> {
   final TextEditingController passphraseController = TextEditingController();
   final TextEditingController customSeparatorController =
       TextEditingController();
-
-  // Snackbar/feedback state
-  bool isSnackbarActive = false;
-  bool isCopySnackbarActive = false;
-  bool isGenSnackbarActive = false;
 
   // Strength info for password/passphrase
   double passwordEntropy = 0;
@@ -182,15 +178,10 @@ class _HomePageState extends State<HomePage> {
   /// Generates a passphrase using the controller and updates UI state.
   void generatePassphrase() {
     if (wordList.isEmpty) {
-      if (!isGenSnackbarActive) {
-        isGenSnackbarActive = true;
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text('Word list not loaded.')))
-            .closed
-            .then((_) {
-              isGenSnackbarActive = false;
-            });
-      }
+      Fluttertoast.showToast(
+        msg: "Word list not loaded",
+        toastLength: Toast.LENGTH_SHORT,
+      );
       return;
     }
     final passphrase = passwordController.generatePassphrase(
@@ -520,23 +511,10 @@ class _HomePageState extends State<HomePage> {
                       Clipboard.setData(
                         ClipboardData(text: resultController.text),
                       ).then((_) {
-                        if (isCopySnackbarActive == true) {
-                          return;
-                        } else {
-                          isCopySnackbarActive = true;
-                          final stackBarController =
-                              // ignore: use_build_context_synchronously
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Password was copied to your clipboard.',
-                                  ),
-                                ),
-                              );
-                          stackBarController.closed.then((_) {
-                            isCopySnackbarActive = false;
-                          });
-                        }
+                        Fluttertoast.showToast(
+                          msg: "Password was copied to your clipboard",
+                          toastLength: Toast.LENGTH_SHORT,
+                        );
                       });
                     },
                     style: ElevatedButton.styleFrom(
@@ -789,22 +767,12 @@ class _HomePageState extends State<HomePage> {
                     });
                     generatePassword();
                     savePasswordSwitches();
-                    if (val &&
-                        widget.symbolController.text.trim().isEmpty &&
-                        !isSnackbarActive) {
-                      isSnackbarActive = true;
-                      ScaffoldMessenger.of(context)
-                          .showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                'Symbols switch is ON but no symbols are provided.',
-                              ),
-                            ),
-                          )
-                          .closed
-                          .then((_) {
-                            isSnackbarActive = false;
-                          });
+                    if (val && widget.symbolController.text.trim().isEmpty) {
+                      Fluttertoast.showToast(
+                        msg:
+                            "Symbols switch is ON but no symbols are provided.",
+                        toastLength: Toast.LENGTH_SHORT,
+                      );
                     }
                   },
                   title: Text(
@@ -950,23 +918,10 @@ class _HomePageState extends State<HomePage> {
                       Clipboard.setData(
                         ClipboardData(text: passphraseController.text),
                       ).then((_) {
-                        if (isCopySnackbarActive == true) {
-                          return;
-                        } else {
-                          isCopySnackbarActive = true;
-                          final stackBarController =
-                              // ignore: use_build_context_synchronously
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Passphrase was copied to your clipboard.',
-                                  ),
-                                ),
-                              );
-                          stackBarController.closed.then((_) {
-                            isCopySnackbarActive = false;
-                          });
-                        }
+                        Fluttertoast.showToast(
+                          msg: 'Passphrase was copied to your clipboard.',
+                          toastLength: Toast.LENGTH_SHORT,
+                        );
                       });
                     },
                     style: ElevatedButton.styleFrom(

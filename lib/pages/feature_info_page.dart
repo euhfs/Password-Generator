@@ -14,6 +14,7 @@ class FeatureInfoPage extends StatelessWidget {
         padding: EdgeInsets.all(16),
         children: [
           Center(
+            //TODO: make this page
             child: Text(
               'Coming soon!',
               style: TextStyle(
