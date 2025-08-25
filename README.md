@@ -1,8 +1,8 @@
 # Password Generator Flutter App
 
-A simple, customizable password generator built with Flutter.
+A simple, local, strong and customizable Password Generator built using Flutter.
 
-![Password Generator UI](./assets/mockups/mockup1.png)
+![Password Generator UI](./assets/mockups/passgen-mockup1.png)
 
 ## Features
 - **Customizable Password Length**: Set the desired length for your password.
@@ -13,12 +13,8 @@ A simple, customizable password generator built with Flutter.
 
 ## Installation
 
-To get started with the app, follow these steps:
+https://euhfs.onrender.com/pages/download-page/password-generator.html
 
-### Prerequisites
-- Install [Flutter](https://flutter.dev/docs/get-started/install) on your system.
+## License
 
-### Clone the Repository
-```bash
-git clone https://github.com/yourusername/password-generator-flutter.git
-cd password-generator-flutter
+This project is licensed under the Apache 2.0 License, check the repository for "LICENSE"
