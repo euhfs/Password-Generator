@@ -1,12 +1,12 @@
 # Password Generator Flutter App
 
-A simple, local, strong, customizable and privacy focused Password Generator built using Flutter.
+A simple, local, strong, customizable and privacy focused Password Generator built using Flutter. This app ensures you can generate secure passwords without compromising your privacy.
 
 <p align="center">
-  <img src="./assets/mockups/passgen-mockup1.webp" width="18%" style="margin-right: 10px"/>
-  <img src="./assets/mockups/passgen-mockup2.webp" width="18%" style="margin-right: 10px"/>
-  <img src="./assets/mockups/passgen-mockup3.webp" width="18%" style="margin-right: 10px"/>
-  <img src="./assets/mockups/passgen-mockup4.webp" width="18%" style="margin-right: 10px"/>
+  <img src="./assets/mockups/passgen-mockup1.webp" width="18%" />
+  <img src="./assets/mockups/passgen-mockup2.webp" width="18%" />
+  <img src="./assets/mockups/passgen-mockup3.webp" width="18%" />
+  <img src="./assets/mockups/passgen-mockup4.webp" width="18%" />
   <img src="./assets/mockups/passgen-mockup5.webp" width="18%" />
 </p>
 
@@ -21,9 +21,8 @@ A simple, local, strong, customizable and privacy focused Password Generator bui
 
 ## Installation
 
-# For the Instalation Please visit my website where you can find out which release is available for your device, or check the releases in this repository.
-https://euhfs.onrender.com/pages/download-page/password-generator.html
+For installation, please visit my [website](https://euhfs.onrender.com/pages/download-page/password-generator.html) to find out which release is available for your device. Alternatively, you can check the releases directly in this repository.
 
 ## License
 
-This project is licensed under the Apache 2.0 License, check the repository for the file "LICENSE"
+This project is licensed under the **Apache 2.0 License**. See the [LICENSE](LICENSE) file in the repository for more details.
