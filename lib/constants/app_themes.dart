@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 final ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
   // Main background color for Scaffold and app
-  scaffoldBackgroundColor: const Color.fromARGB(255, 40, 40, 40),
-  cardColor: const Color.fromARGB(255, 30, 30, 30),
+  scaffoldBackgroundColor: const Color.fromARGB(255, 30, 30, 30),
+  cardColor: const Color.fromARGB(255, 40, 40, 40),
   appBarTheme: const AppBarTheme(
     scrolledUnderElevation: 0,
     backgroundColor: Color.fromARGB(255, 30, 30, 30),
@@ -63,7 +63,8 @@ final ThemeData darkTheme = ThemeData(
 final ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   // Main background color for Scaffold and app
-  scaffoldBackgroundColor: Color.fromARGB(255, 242, 242, 242),
+  scaffoldBackgroundColor: Color.fromARGB(255, 255, 255, 255),
+  cardColor: Color.fromARGB(255, 245, 245, 245),
   appBarTheme: const AppBarTheme(
     scrolledUnderElevation: 0,
     backgroundColor: Color.fromARGB(255, 255, 255, 255),

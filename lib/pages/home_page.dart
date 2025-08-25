@@ -250,6 +250,8 @@ class _HomePageState extends State<HomePage> {
 
     // Main scaffold for the page
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
+
       appBar: AppBar(
         title: Text('Password Generator'),
         actions: [
@@ -277,7 +279,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      backgroundColor: theme.scaffoldBackgroundColor,
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: SingleChildScrollView(
@@ -399,6 +400,9 @@ class _HomePageState extends State<HomePage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        // Spacer
+        SizedBox(height: 5),
+
         // Output field for password
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
@@ -468,7 +472,7 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SizedBox(
-                height: 60,
+                height: 50,
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(28),
@@ -825,6 +829,9 @@ class _HomePageState extends State<HomePage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        // Spacer
+        SizedBox(height: 5),
+
         // Output field for passphrase
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
@@ -895,7 +902,7 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SizedBox(
-                height: 60,
+                height: 50,
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
@@ -984,6 +991,7 @@ class _HomePageState extends State<HomePage> {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0),
           child: Container(
+            height: 60,
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
@@ -1136,6 +1144,7 @@ class _HomePageState extends State<HomePage> {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
           child: Container(
+            height: 60,
             decoration: BoxDecoration(
               color: theme.cardColor,
               borderRadius: BorderRadius.circular(18),
@@ -1287,7 +1296,11 @@ class _HomePageState extends State<HomePage> {
                                 onPressed: () => Navigator.of(context).pop(),
                                 child: Text(
                                   'Cancel',
-                                  style: TextStyle(color: Colors.tealAccent, fontSize: 24, fontWeight: FontWeight.bold),
+                                  style: TextStyle(
+                                    color: Colors.tealAccent,
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                               TextButton(
@@ -1295,7 +1308,11 @@ class _HomePageState extends State<HomePage> {
                                     Navigator.of(context).pop(tempSep),
                                 child: Text(
                                   'OK',
-                                  style: TextStyle(color: Colors.tealAccent, fontSize: 24, fontWeight: FontWeight.bold),
+                                  style: TextStyle(
+                                    color: Colors.tealAccent,
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ],

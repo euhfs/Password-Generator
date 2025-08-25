@@ -63,6 +63,8 @@ class SettingsPage extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
+
       appBar: AppBar(
         title: Text('Settings'),
         centerTitle: false,
@@ -78,6 +80,7 @@ class SettingsPage extends StatelessWidget {
               );
             },
           ),
+
           // Popup menu for symbols/history/theme
           ResetSymbolsMenu(
             symbolController: symbolController,
@@ -90,9 +93,10 @@ class SettingsPage extends StatelessWidget {
           ),
         ],
       ),
-      backgroundColor: theme.scaffoldBackgroundColor,
+
+      // Body
       body: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 25.0),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -109,7 +113,7 @@ class SettingsPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                padding: EdgeInsets.symmetric(vertical: 16, horizontal: 12),
                 child: Column(
                   children: [
                     // Rounded settings box
@@ -187,20 +191,6 @@ class SettingsPage extends StatelessWidget {
                             ),
                           ),
                           Divider(color: theme.dividerColor),
-                          // Hide generated password switch
-                          SwitchListTile(
-                            onChanged: onHideGeneratedPasswordChanged,
-                            value: hideGeneratedPassword,
-                            title: Text(
-                              'Hide generated password',
-                              style: TextStyle(
-                                color: theme.textTheme.bodyMedium?.color,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                          Divider(color: theme.dividerColor),
                           // Symbols input field
                           ListTile(
                             title: Row(
@@ -250,7 +240,10 @@ class SettingsPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(height: 10),
+
+                    // Spacer
+                    SizedBox(height: 15),
+
                     // Password history switch
                     Container(
                       decoration: BoxDecoration(
@@ -275,6 +268,21 @@ class SettingsPage extends StatelessWidget {
                             onChanged: onPasswordHistoryChanged,
                             title: Text(
                               'Password History',
+                              style: TextStyle(
+                                color: theme.textTheme.bodyMedium?.color,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                          Divider(color: theme.dividerColor),
+
+                          // Hide generated password switch
+                          SwitchListTile(
+                            onChanged: onHideGeneratedPasswordChanged,
+                            value: hideGeneratedPassword,
+                            title: Text(
+                              'Hide generated password',
                               style: TextStyle(
                                 color: theme.textTheme.bodyMedium?.color,
                                 fontSize: 18,
