@@ -311,12 +311,12 @@ class _HomePageState extends State<HomePage> {
                           },
                           child: Padding(
                             padding: selectedType == 0
-                                ? EdgeInsets.all(4)
+                                ? EdgeInsets.all(5.5)
                                 : EdgeInsets.zero,
                             child: AnimatedContainer(
                               duration: Duration(milliseconds: 180),
                               curve: Curves.ease,
-                              height: 56,
+                              height: 54,
                               decoration: BoxDecoration(
                                 color: selectedType == 0
                                     ? theme.scaffoldBackgroundColor

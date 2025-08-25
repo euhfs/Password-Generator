@@ -90,6 +90,17 @@ class _ResetSymbolsMenuState extends State<ResetSymbolsMenu> {
               builder: (modalContext, setModalState) => Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  // Drag handle
+                  Container(
+                    width: 40,
+                    height: 4,
+                    margin: EdgeInsets.only(top: 8, bottom: 6),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[400],
+                      borderRadius: BorderRadius.circular(2),
+                    ),
+                  ),
+
                   // Header row with actions
                   Padding(
                     padding: const EdgeInsets.all(12.0),

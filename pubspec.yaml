@@ -13,6 +13,7 @@ dependencies:
   flutter_secure_storage: ^9.2.4
   shared_preferences: ^2.5.3
   flutter_native_splash: ^2.4.6
+  url_launcher: ^6.3.2
 
 dev_dependencies:
   flutter_test:
@@ -22,6 +23,7 @@ dev_dependencies:
 flutter:
   assets:
     - assets/passphraselist.txt
+    - assets/imgs/aboutpage-img.jpg
   uses-material-design: true
 
 flutter_native_splash:
