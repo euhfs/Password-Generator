@@ -3,10 +3,10 @@
 A simple, local, strong, customizable and privacy focused Password Generator built using Flutter.
 
 <p align="center">
-  <img src="./assets/mockups/passgen-mockup1.webp" width="18%" />
-  <img src="./assets/mockups/passgen-mockup2.webp" width="18%" />
-  <img src="./assets/mockups/passgen-mockup3.webp" width="18%" />
-  <img src="./assets/mockups/passgen-mockup4.webp" width="18%" />
+  <img src="./assets/mockups/passgen-mockup1.webp" width="18%" style="margin-right: 5px"/>
+  <img src="./assets/mockups/passgen-mockup2.webp" width="18%" style="margin-right: 5px"/>
+  <img src="./assets/mockups/passgen-mockup3.webp" width="18%" style="margin-right: 5px"/>
+  <img src="./assets/mockups/passgen-mockup4.webp" width="18%" style="margin-right: 5px"/>
   <img src="./assets/mockups/passgen-mockup5.webp" width="18%" />
 </p>
 
