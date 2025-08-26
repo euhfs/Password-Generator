@@ -88,7 +88,7 @@ class _MainAppState extends State<MainApp> {
           builder: (context) {
             final width = MediaQuery.of(context).size.width;
 
-            if (width >= 600) {
+            if (width >= 850) {
               return [
                 VaultPage(
                   onTab: _onTab,
