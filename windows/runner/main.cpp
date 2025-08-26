@@ -26,7 +26,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE prev,
 
   FlutterWindow window(project);
   Win32Window::Point origin(600, 100);
-  Win32Window::Size size(400, 850);
+  Win32Window::Size size(1280, 720);
   if (!window.Create(L"Password Generator", origin, size)) {
     return EXIT_FAILURE;
   }

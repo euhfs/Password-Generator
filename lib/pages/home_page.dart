@@ -247,6 +247,17 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+
+    if (width >= 600) {
+      return buildFullDesktopScaffold(context);
+    } else {
+      return buildFullMobileScaffold(context);
+    }
+  }
+
+  // Mobile UI
+  Widget buildFullMobileScaffold(BuildContext context) {
     final theme = Theme.of(context);
 
     // Main scaffold for the page
@@ -335,6 +346,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
+
                       // Passphrase tab
                       Expanded(
                         child: GestureDetector(
@@ -378,6 +390,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
+
               // --- Password UI ---
               selectedType == 0
                   ? buildPasswordUI(theme)
@@ -389,13 +402,13 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  /// Password UI section, fully theme-adaptive
+  // Password UI section, fully theme-adaptive
   Widget buildPasswordUI(ThemeData theme) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         // Spacer
-        SizedBox(height: 5),
+        const SizedBox(height: 5),
 
         // Output field for password
         Padding(
@@ -438,6 +451,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
+
         // Password strength bar
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 13.0, vertical: 4),
@@ -448,7 +462,10 @@ class _HomePageState extends State<HomePage> {
             valueColor: AlwaysStoppedAnimation<Color>(passwordStrengthColor),
           ),
         ),
-        SizedBox(height: 4),
+
+        // Spacer
+        const SizedBox(height: 4),
+
         // Strength label
         Center(
           child: Text(
@@ -459,6 +476,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
+
         // Generate and Copy buttons
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
@@ -493,6 +511,7 @@ class _HomePageState extends State<HomePage> {
               // Spacer
               const SizedBox(height: 10),
 
+              // Copy Button
               SizedBox(
                 height: 48,
                 child: Container(
@@ -606,7 +625,10 @@ class _HomePageState extends State<HomePage> {
                     autofillHints: null,
                   ),
                 ),
+
+                // Spacer
                 Spacer(),
+
                 // Decrement button
                 Container(
                   width: 48,
@@ -637,7 +659,10 @@ class _HomePageState extends State<HomePage> {
                     },
                   ),
                 ),
-                SizedBox(width: 8),
+
+                // Spacer
+                const SizedBox(width: 8),
+
                 // Increment button
                 Container(
                   width: 48,
@@ -671,6 +696,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
+
         // Password switches (A-Z, a-z, 0-9, Symbols)
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
@@ -699,7 +725,10 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
+
+                // Divider
                 Divider(color: theme.dividerColor),
+
                 // Lowercase switch
                 SwitchListTile(
                   value: useLowercase,
@@ -717,7 +746,10 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
+
+                // Divider
                 Divider(color: theme.dividerColor),
+
                 // Numbers switch
                 SwitchListTile(
                   value: useNumbers,
@@ -735,7 +767,10 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
+
+                // Divider
                 Divider(color: theme.dividerColor),
+
                 // Symbols switch
                 SwitchListTile(
                   value: useSymbols,
@@ -776,7 +811,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  /// Passphrase UI section, fully theme-adaptive
+  // Passphrase UI section, fully theme-adaptive
   Widget buildPassphraseUI(ThemeData theme) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -1392,4 +1427,12 @@ class _HomePageState extends State<HomePage> {
       ],
     );
   }
+}
+
+// Desktop UI
+Widget buildFullDesktopScaffold(BuildContext context) {
+  // ignore: unused_local_variable
+  final theme = Theme.of(context);
+
+  return Scaffold(backgroundColor: theme.scaffoldBackgroundColor);
 }
