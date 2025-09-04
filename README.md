@@ -23,6 +23,10 @@ A simple, local, strong, customizable and privacy focused Password Generator bui
 
 For installation, please visit my [website](https://euhfs.onrender.com/pages/download-page/password-generator.html) to find out which release is available for your device. Alternatively, you can check the releases directly in this repository.
 
+## Future Plans
+
+- Make Destop version (windows/linux)
+
 ## License
 
 This project is licensed under the **Apache 2.0 License**. See the [LICENSE](LICENSE) file in the repository for more details.
